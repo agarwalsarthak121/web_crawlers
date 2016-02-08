@@ -1,4 +1,5 @@
-#!/usr/bin/env python
+#!/usr/bin/env python3
+
 import requests
 from bs4 import BeautifulSoup
 from time import sleep
@@ -20,21 +21,21 @@ for link in soup.findAll('item'):
 
 while True:
     try:
-        match_no = int(input('Enter match no : '))
+        user_input = int(input('Enter match no: '))
     except ValueError:
         print ('Enter correct input')
         continue
-    if match_no < 1 or match_no > len(list_links):
+    if user_input < 1 or user_input > 30:
         print ('Enter correct input')
         continue
     else:
         break
         
-url = list_links[match_no - 1]
+url = list_links[user_input - 1]
 sc = requests.get(url)
 soup = BeautifulSoup(sc.text,'lxml')
 
+while True:
 for score in soup.findAll('title'):
-    while True:
-        print (score.text)
-        sleep (60)
+    print (score.text)
+    sleep (60)
