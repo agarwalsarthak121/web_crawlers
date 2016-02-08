@@ -30,11 +30,12 @@ while True:
         continue
     else:
         break
- 
-while True:       
+        
 url = list_links[user_input - 1]
 sc = requests.get(url)
 soup = BeautifulSoup(sc.text,'lxml')
+
+while True:
 for score in soup.findAll('title'):
     print (score.text)
     sleep (60)
