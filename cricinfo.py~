@@ -21,7 +21,7 @@ for link in soup.findAll('item'):
 while True:
     try:
         match_no = int(input('Enter match no : '))
-    except ValueError:
+    except SyntaxError:
         print ('Enter correct input')
         continue
     if match_no < 1 or match_no > len(list_links):

@@ -23,7 +23,6 @@ url = book_movie[movie_no - 1]
 source_code = requests.get(url)
 soup = BeautifulSoup(source_code.text,'lxml')
 
-for div in soup.find_all('div', class_='cinema'):
-    timings = div.find('div', class_='timings')
-    print(timings.get_text(strip=True))
+for multiplex_name in soup.findAll('div',{'class':'timings'}):
+    print (multiplex_name.text)
     
