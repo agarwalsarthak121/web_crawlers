@@ -26,7 +26,7 @@ list_links = []
 for link in soup.findAll('item'):
     list_links.append(link.find('guid').text)
 
-print 'Enter match no. or enter 0 to exit:'
+print 'Enter match no.:'
 while True:
     try:
         user_input = int(input())
@@ -37,9 +37,7 @@ while True:
         print 'Enter correct input'
     if user_input < 0 or user_input > 30:
         print 'Enter correct input'
-        continue
-    elif user_input == 0:
-        sys.exit()      
+        continue      
     else:
         break
   

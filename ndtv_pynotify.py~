@@ -25,7 +25,7 @@ while True:
     div = soup.findAll('div',{'class':'nstory_header'})
     i = random.randrange(0,len(div)-1)
     sendmessage('Live News',div[i].text)
-    sleep (900)
+    sleep (15)
     
 
 
