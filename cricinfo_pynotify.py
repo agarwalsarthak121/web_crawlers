@@ -17,6 +17,7 @@ print '='*len('Live Cricket Matches:')
 url = "http://static.cricinfo.com/rss/livescores.xml"
 sc = requests.get(url)
 soup = BeautifulSoup(sc.text,'lxml')
+
 i = 1
 for data in soup.findAll('item'):
     print str(i)+'. '+data.find('description').text
@@ -42,12 +43,20 @@ while True:
         sys.exit()      
     else:
         break
-  
-while True:      
+url = list_links[user_input - 1]
+sc = requests.get(url)
+soup = BeautifulSoup(sc.text,'lxml')  
+
+while True:
     url = list_links[user_input - 1]
     sc = requests.get(url)
-    soup = BeautifulSoup(sc.text,'lxml')
-    for score in soup.findAll('title'): 
-        sendmessage('Live Score',score.text)
-        sleep (60)
+    soup = BeautifulSoup(sc.text,'lxml')       
+    try:
+        sc.raise_for_status()
+    except Exception as exc:
+        print ('Connection Issue')
+        continue    
+    score = soup.findAll('title') 
+    sendmessage('Live Score',score[0].text)
+    
 

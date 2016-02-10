@@ -3,6 +3,7 @@
 import requests
 from bs4 import BeautifulSoup
 import pyperclip
+import webbrowser
 
 '''
 print ('Select your torrent search engine:')
@@ -29,17 +30,17 @@ url = 'https://thepiratebay.se/search/'+search+'/0/99/0'
 source_code = requests.get(url)
 soup = BeautifulSoup(source_code.text,'lxml')
 i = 0
-j = 1
-for search_item in soup.findAll('a',{'class':'detLink'}):
-    list.append(search_item.get('href'))
+k = 0
+search_item = soup.findAll('a',{'class':'detLink'})
+
+for j in range(min(10,len(search_item))):
+    list.append(search_item[k].get('href'))
     seeds = soup.findAll('td',{'align':'right'})
     leeches = soup.findAll('td',{'align':'right'})
-    print (str(j)+'. '+search_item.text,seeds[i].text,leeches[i+1].text)
+    print (str(j+1)+'. '+search_item[k].text,seeds[i].text,leeches[i+1].text)
     i += 2
-    j += 1
-    if j > 10:
-        break
-
+    k += 1
+j2 = j + 1
 print ()
 print ('Kickass Torrents')
 print ()
@@ -47,16 +48,17 @@ url = 'https://kickass.unblocked.li/usearch/'+search
 source_code = requests.get(url)
 soup = BeautifulSoup(source_code.text,'lxml')  
 i = 1
-for search_item in soup.findAll('a',{'class':'cellMainLink'}):
-    list.append(search_item.get('href'))
+k = 0
+search_item = soup.findAll('a',{'class':'cellMainLink'})
+
+for j in range(j2,min(10+j2,len(search_item)+j2)):
+    list.append(search_item[k].get('href'))
     size = soup.findAll('td',{'class':'nobr center'})
     seeds = soup.findAll('td',{'class':'green center'})
     leeches = soup.findAll('td',{'class':'red lasttd center'})
-    print (str(j)+'. '+search_item.text,size[i-1].text,seeds[i-1].text,leeches[i-1].text)
+    print (str(j+1)+'. '+search_item[k].text,size[i-1].text,seeds[i-1].text,leeches[i-1].text)
     i += 1
-    j += 1
-    if j > 20:
-        break
+    k += 1
 
 print ()
 print ('Extratorrent')
@@ -64,20 +66,23 @@ print ()
 url = 'http://extratorrent.date/search/?search='+search+'&new=1&x=0&y=0'
 source_code = requests.get(url)
 soup = BeautifulSoup(source_code.text,'lxml')
-i = 1
-for search_item in soup.findAll('td',{'class':'tli'}):
-    list.append(search_item.find('a').get('href'))
-    seeds = soup.findAll('td',{'class':'sy'})
-    leeches = soup.findAll('td',{'class':'ly'})
-    if len(search_item.find_all('a')[0].text) < 4:
-        search_item = search_item.find_all('a')[1].text
+k = 0
+j3 = j+1
+
+search_item = soup.findAll('td',{'class':'tli'})
+for j in range(j3,min(10+j3,len(search_item)+j3)):
+    list.append(search_item[k].find('a').get('href'))
+    '''seeds = soup.findAll('td',{'class':'sy'})
+    leeches = soup.findAll('td',{'class':'ly'})'''
+    if len(search_item[k].find_all('a')[0].text) < 4:
+        search_item2 = search_item[k].find_all('a')[1].text
     else:
-        search_item = search_item.find_all('a')[0].text
-    print (str(j)+'. '+search_item,seeds[i-1].text,leeches[i-1].text)
-    i += 1
-    j += 1
-    if j > 30:
-        break
+        search_item2 = search_item[k].find_all('a')[0].text
+    print (str(j+1)+'. '+search_item2)
+    '''seeds[i-1].text,leeches[i-1].text)'''
+    k += 1
+
+j4 = j + 1
 
 while True:
     try:
@@ -91,7 +96,7 @@ while True:
     else:
         break
 
-if 1 <= user_input <= 10:
+if 1 <= user_input <= j2:
     url = 'https://thepiratebay.se'+list[user_input - 1]
     source_code = requests.get(url)
     soup = BeautifulSoup(source_code.text,'lxml')
@@ -99,17 +104,19 @@ if 1 <= user_input <= 10:
     pyperclip.copy(magnet[0].get('href'))
     print ('Magnet Link Copied')
     
-elif 11 <= user_input <= 20:
+elif j2 < user_input <= j3:
     url = 'https://kickass.unblocked.li'+list[user_input - 1]
     source_code = requests.get(url)
     soup = BeautifulSoup(source_code.text,'lxml')
     for magnet in soup.findAll('a',{'class':'kaGiantButton '}):
         pyperclip.copy(magnet.get('href'))
         print ('Magnet link Copied')
-elif 20 <= user_input <= 30:
+        
+elif j3 < user_input <= j4:
     url = 'http://www.extratorrent.date'+list[user_input - 1]
     source_code = requests.get(url)
     soup = BeautifulSoup(source_code.text,'lxml')
     for magnet in soup.findAll('a',{'title':'Magnet link'}):
         pyperclip.copy(magnet.get('href'))
         print ('Magnet link Copied')
+webbrowser.open(pyperclip.paste())

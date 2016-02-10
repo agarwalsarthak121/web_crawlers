@@ -5,7 +5,7 @@ from bs4 import BeautifulSoup
 
 dict_url = ['http://dictionary.reference.com/','http://dictionary.cambridge.org/','http://www.merriam-webster.com/']
 fw = open('word.txt','w')
-'''
+
 
 source_code = requests.get(dict_url[0])
 plain_text = source_code.text
@@ -15,7 +15,7 @@ for word in soup.findAll('a',{'class':'wotd'}):
     for word_meaning in soup.findAll('a',{'class':'wotd_txt'}):
         fw.write('Word of the day: ')
         fw.write(word.text+' - '+word_meaning.text+'\n')
-'''
+
 '''
 source_code = requests.get(dict_url[1])
 plain_text = source_code.text
