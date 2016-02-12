@@ -7,25 +7,25 @@ import random
 from time import sleep
 import pynotify
 
-def sendmessage(title, message):
-    pynotify.init("Test")
-    notice = pynotify.Notification(title, message)
-    notice.show()
-    return
-
-sock=requests.get("http://www.ndtv.com/top-stories")
-htmlSrc=sock.text
-soup=BeautifulSoup(htmlSrc,'lxml')
-'''print ("NDTV News\n")
-today = datetime.date.today()
-print (today.strftime('Today\'s date %d, %b %Y'))
-print ()'''
-
 while True:
-    div = soup.findAll('div',{'class':'nstory_header'})
-    i = random.randrange(0,len(div)-1)
-    sendmessage('Live News',div[i].text)
-    sleep (15)
-    
-
+    try:
+        sc = requests.get('http://www.ndtv.com/topic/top-10/news')
+        soup = BeautifulSoup(sc.text,'lxml')
+        news = soup.select('a strong')    
+        while True:
+            i = random.randrange(0,len(news)-1)
+            j = random.randrange(0,len(news)-1)
+            if i == j:
+                continue
+            else:
+                pynotify.init('test')
+                n = pynotify.Notification('Live News','* '+news[i].text+'\n'+'* '+news[j].text)
+                n.show()
+                break             
+    except requests.exceptions.ConnectionError:
+        pynotify.init('test')
+        n = pynotify.Notification('Connection Issue','No internet found')
+        n.show()
+        continue
+    sleep(15)
 

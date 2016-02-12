@@ -81,7 +81,7 @@ for j in range(j3,min(10+j3,len(search_item)+j3)):
     print (str(j+1)+'. '+search_item2)
     '''seeds[i-1].text,leeches[i-1].text)'''
     k += 1
-
+print ()
 j4 = j + 1
 
 while True:
@@ -119,4 +119,4 @@ elif j3 < user_input <= j4:
     for magnet in soup.findAll('a',{'title':'Magnet link'}):
         pyperclip.copy(magnet.get('href'))
         print ('Magnet link Copied')
-#webbrowser.open(pyperclip.paste())
+webbrowser.open(pyperclip.paste())

@@ -3,8 +3,7 @@
 import requests
 from bs4 import BeautifulSoup
 
-print ('Enter city:')
-city = input()
+city = input('Enter city: ')
 url = 'http://in.bookmyshow.com/'+city
 source_code = requests.get(url)
 soup = BeautifulSoup(source_code.text,'lxml')
@@ -23,6 +22,6 @@ url = book_movie[movie_no - 1]
 source_code = requests.get(url)
 soup = BeautifulSoup(source_code.text,'lxml')
 
-for multiplex_name in soup.findAll('div',{'class':'timings'}):
-    print (multiplex_name.text)
+div = soup.select('.timings')
+print (div)
     

@@ -81,7 +81,7 @@ for j in range(j3,min(10+j3,len(search_item)+j3)):
     print (str(j+1)+'. '+search_item2)
     '''seeds[i-1].text,leeches[i-1].text)'''
     k += 1
-
+print ()
 j4 = j + 1
 
 while True:
@@ -90,7 +90,7 @@ while True:
     except ValueError:
         print ('Enter correct input')
         continue
-    if user_input < 1 or user_input > 30:
+    if user_input < 1 or user_input > j4:
         print ('Enter correct input')
         continue
     else:

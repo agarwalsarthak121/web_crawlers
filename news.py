@@ -9,9 +9,9 @@ import pynotify
 
 while True:
     try:
-        sc = requests.get('http://www.ndtv.com/topic/top-10/news')
+        sc = requests.get('http://www.rediff.com/news/headlines')
         soup = BeautifulSoup(sc.text,'lxml')
-        news = soup.select('a strong')    
+        news = soup.select('p > a')    
         while True:
             i = random.randrange(0,len(news)-1)
             j = random.randrange(0,len(news)-1)
