@@ -9,9 +9,13 @@ import pynotify
 
 while True:
     try:
-        sc = requests.get('http://www.rediff.com/news/headlines')
+        li = ['india-news','world-news','sports','movies']
+        k = random.randint(0,3)
+        sc = requests.get('http://www.abplive.in/'+li[k])
         soup = BeautifulSoup(sc.text,'lxml')
-        news = soup.select('p > a')    
+        head = soup.select('h1 > a')
+        basic = soup.select('h5 > a')
+        news = head + basic
         while True:
             i = random.randrange(0,len(news)-1)
             j = random.randrange(0,len(news)-1)
@@ -26,6 +30,5 @@ while True:
         pynotify.init('test')
         n = pynotify.Notification('Connection Issue','No internet found')
         n.show()
-        continue
     sleep(90)
 

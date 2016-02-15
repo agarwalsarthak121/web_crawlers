@@ -26,6 +26,5 @@ while True:
         pynotify.init('test')
         n = pynotify.Notification('Connection Issue','No internet found')
         n.show()
-        continue
     sleep(90)
 
