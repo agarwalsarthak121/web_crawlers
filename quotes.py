@@ -4,7 +4,7 @@ import pynotify
 import random
 from time import sleep
 
-fw = open('quotes.txt','r')
+fw = open('.quotes.txt','r')
 vocab = fw.read()
 vocab = vocab.split('\n')
 
