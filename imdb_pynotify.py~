@@ -9,7 +9,7 @@ while True:
     movie = pyperclip.paste()
     if movie != '':
         fw = open('search.txt','a')
-        fw.write(movie+'\n')
+        fw.append(movie+'\n')
         fw.close()
         url = 'http://www.imdb.com/find?ref_=nv_sr_fn&q='+movie+'&s=all'
         pyperclip.copy('')

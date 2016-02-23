@@ -4,7 +4,7 @@ import pynotify
 import random
 from time import sleep
 
-fw = open('facts.txt','r')
+fw = open('.facts.txt','r')
 facts = fw.read()
 facts = facts.split('\n')
 while True:    

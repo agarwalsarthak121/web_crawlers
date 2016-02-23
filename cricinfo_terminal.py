@@ -32,9 +32,9 @@ while True:
         break
  
 while True:       
-url = list_links[user_input - 1]
-sc = requests.get(url)
-soup = BeautifulSoup(sc.text,'lxml')
-for score in soup.findAll('title'):
-    print (score.text)
+    url = list_links[user_input - 1]    
+    sc = requests.get(url)
+    soup = BeautifulSoup(sc.text,'lxml')
+    score = soup.findAll('title')
+    print (score[0].text)
     sleep (60)
