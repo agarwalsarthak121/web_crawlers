@@ -18,13 +18,17 @@ while True:
     except ValueError:
         print ('Enter correct input')
         continue
+
 #Download top 100 Songs from billboard
 if user_input == 3 :
     fw = open('.songs.txt','w')
-    fr = open('.downloaded.txt','r')
-    downloaded = fr.read()
-    downloaded = downloaded.split('\n')
-    fr.close()
+    try:
+        fr = open('.downloaded.txt','r')
+        downloaded = fr.read()
+        downloaded = downloaded.split('\n')
+        fr.close()
+    except FileNotFoundError:
+        downloaded = []
     url1 = 'http://www.billboard.com/charts/hot-100'
     sc = requests.get(url1)
     soup1 = BeautifulSoup(sc.text,'lxml')
@@ -59,14 +63,23 @@ if user_input == 3 :
 
 #Download songs from the file song.txt
 elif user_input == 2:
-    fr = open('.downloaded.txt','r')
-    downloaded = fr.read()
-    downloaded = downloaded.split('\n')
-    fr.close()
-    fr = open('song.txt','r')
-    songs = fr.read()
-    songs = songs.split('\n')
-    fa = open('.downloaded.txt','a')
+    #fr = open('.downloaded.txt','r')
+    #downloaded = fr.read()
+    #downloaded = downloaded.split('\n')
+    #fr.close()
+    songs = []
+    print ('Enter song names to download and Enter nothing to exit')
+    while True:
+        song_name = input('Enter song name: ')
+        if song_name != '':
+            songs.append(song_name)
+        else:
+            if len(songs) == 0:
+                print ('Enter atleast one song')
+                continue
+            else:
+                break
+    #fa = open('.downloaded.txt','a')
 
     for x in songs:
       for y in downloaded:
@@ -82,12 +95,11 @@ elif user_input == 2:
             print ('Downloaded.')
             fa.write(x+'\n')
     print ('Download Complete')   
-    fr.close()
-    fa.close()
+    #fa.close()
 
 #Search and download songs
 elif user_input == 1:
-    fa = open('.downloaded.txt','a')
+    #fa = open('.downloaded.txt','a')
     search = input('Enter the name of the song: ')
     url = 'https://www.youtube.com/results?search_query='+search
     sc =requests.get(url)
@@ -112,8 +124,8 @@ elif user_input == 1:
 
     print ('Downloading...')
     os.system("youtube-dl --extract-audio --audio-format mp3 " + 'https://www.youtube.com'+link[user_input-1])
-    fa.write(search+'\n')
-    fa.close()
+    #fa.write(search+'\n')
+    #fa.close()
 
 
 

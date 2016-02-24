@@ -5,12 +5,14 @@ from bs4 import BeautifulSoup
 import os
 import re
 
-
+#Search for the desired manga
 search = input('Enter name of anime: ')
 print ()
 search = search.split()
 search = ('+').join(search)
 search_url = 'http://manga.animea.net/series_old.php?title_range=0&title='+search+'&author_range=0&author=&artist_range=0&artist=&completed=0&yor_range=0&yor=&type=3&genre%5BAction%5D=0&genre%5BAdventure%5D=0&genre%5BComedy%5D=0&genre%5BDoujinshi%5D=0&genre%5BDrama%5D=0&genre%5BEcchi%5D=0&genre%5BFantasy%5D=0&genre%5BGender_Bender%5D=0&genre%5BHarem%5D=0&genre%5BHistorical%5D=0&genre%5BHorror%5D=0&genre%5BJosei%5D=0&genre%5BMartial_Arts%5D=0&genre%5BMature%5D=0&genre%5BMecha%5D=0&genre%5BMystery%5D=0&genre%5BPsychological%5D=0&genre%5BRomance%5D=0&genre%5BSchool_Life%5D=0&genre%5BSci-fi%5D=0&genre%5BSeinen%5D=0&genre%5BShotacon%5D=0&genre%5BShoujo%5D=0&genre%5BShoujo_Ai%5D=0&genre%5BShounen%5D=0&genre%5BShounen_Ai%5D=0&genre%5BSlice_of_Life%5D=0&genre%5BSmut%5D=0&genre%5BSports%5D=0&genre%5BSupernatural%5D=0&genre%5BTragedy%5D=0&genre%5BYaoi%5D=0&genre%5BYuri%5D=0&input=Search'
+
+#Getting search results and links
 sc0 = requests.get(search_url)
 soup0 = BeautifulSoup(sc0.text,'lxml')
 search_li = []
@@ -23,6 +25,8 @@ for i in range(len(search_result)):
         search_li.append(res[j].get('href'))
         k += 1
 print ()
+
+#Select the desired search result
 user_input = int(input('Enter your choice number: '))
 url_sel = 'http://manga.animea.net'+search_li[user_input-1]
 sc = requests.get(url_sel)
@@ -31,6 +35,7 @@ chap_list = soup.select('.col2 a')
 chap_list.reverse()
 link_list = []
 
+#Creating directory and Getting chapters
 os.makedirs(search+'_Manga', exist_ok=True)
 print ('No. of chapters in your selected manga :',len(chap_list))
 for i in range(len(chap_list)):
@@ -42,7 +47,8 @@ for li in chap_list:
     mo1 = mo.group()
     chap_no.append(mo1)
 print (chap_no)
-#os.makedirs('Erased_Manga/chapter_1' exist_ok=True)
+
+#Starting chapter and page no.
 star = input('Enter starting chapter: ')
 for i in range(len(chap_no)):
     if chap_no[i] == star:
@@ -51,6 +57,7 @@ for i in range(len(chap_no)):
         
 page_no = int(input('Enter page no. : '))
 
+#Downloading Images
 for chap in range(star,len(chap_list)):
     url_sel = 'http://manga.animea.net'+link_list[chap]
     sc1 = requests.get(url_sel)

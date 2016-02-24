@@ -58,7 +58,7 @@ for chap in range(star,len(chap_list)):
     opt = soup1.findAll('option')
     chap_pages = int(opt[-1].text)
     print ('Pages in chapter '+chap_no[chap]+' '+str(chap_pages))
-    page = pages_no
+    page = page_no
     while True:
         if page > chap_pages:
             break
