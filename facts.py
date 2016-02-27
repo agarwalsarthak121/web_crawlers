@@ -23,4 +23,5 @@ for i in range(10):
     soup = BeautifulSoup(sc.text,'lxml')
     fact = soup.findAll('p',{'class':'fact_detail'})
     for i in range(len(fact)):
-        fw.write(fact[i].text+'\n')'''
+        fw.write(fact[i].text+'\n')
+'''
