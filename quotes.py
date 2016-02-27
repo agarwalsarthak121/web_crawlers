@@ -19,7 +19,7 @@ while True:
     if i % 2 == 0:
         if len(vocab[i]) < 118:
             sendmessage(vocab[i],vocab[i+1])
-            sleep(90)
+            sleep(300)
         else:
             continue
     else:

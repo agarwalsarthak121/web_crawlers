@@ -14,7 +14,7 @@ while True:
     pynotify.init('test')
     n = pynotify.Notification('Fact No. '+str(i),facts[i])
     n.show()
-    sleep (300)
+    sleep (90)
 
 '''
 for i in range(10):

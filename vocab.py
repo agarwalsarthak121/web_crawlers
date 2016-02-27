@@ -18,6 +18,6 @@ while True:
     i = random.randint(0,len(vocab)-1)
     if i % 2 == 0:
         sendmessage(vocab[i],vocab[i+1])
-        sleep(90)
+        sleep(300)
     else:
         continue
