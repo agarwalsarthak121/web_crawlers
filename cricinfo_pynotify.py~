@@ -50,13 +50,14 @@ soup = BeautifulSoup(sc.text,'lxml')
 while True:
     url = list_links[user_input - 1]
     sc = requests.get(url)
-    soup = BeautifulSoup(sc.text,'lxml')       
+    soup = BeautifulSoup(sc.text,'lxml') 
+    score = soup.findAll('title')       
     try:
         sc.raise_for_status()
     except Exception as exc:
         print ('Connection Issue')
         continue    
-    score = soup.findAll('title') 
     sendmessage('Live Score',score[0].text)
-    sleep (60)
+    sleep (30)
+    
 

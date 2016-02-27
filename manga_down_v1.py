@@ -5,6 +5,7 @@ from bs4 import BeautifulSoup
 import os
 import re
 import threading
+import time
 
 #Search for the desired manga
 search = input('Enter name of anime: ')
@@ -30,6 +31,7 @@ print ()
 #Select the desired search result
 user_input = int(input('Enter your choice number: '))
 url_sel = 'http://manga.animea.net'+search_li[user_input-1]
+x = len(res[user_input - 1].text)
 sc = requests.get(url_sel)
 soup = BeautifulSoup(sc.text,'lxml')
 chap_list = soup.select('.col2 a')
@@ -38,86 +40,61 @@ link_list = []
 
 #Creating directory and Getting chapters
 os.makedirs(search+'_Manga', exist_ok=True)
+os.chdir('./'+search+'_Manga')
+source = os.listdir(os.getcwd())
 print ('No. of chapters in your selected manga :',len(chap_list))
 for i in range(len(chap_list)):
     link_list.append(chap_list[i].get('href'))
 chap_no = []
 chap_name = re.compile(r'\d+(.)?\d*')
 for li in chap_list:
-    mo = chap_name.search(li.text[-4:])
+    mo = chap_name.search(li.text[x+1:])
     mo1 = mo.group()
     chap_no.append(mo1)
 print (chap_no)
 
-'''
-#Starting chapter and page no.
-star = input('Enter starting chapter: ')
-for i in range(len(chap_no)):
-    if chap_no[i] == star:
-        star = i
-        break
-        
-page_no = int(input('Enter page no. : '))
-'''
 
-def mangaDown(startchap, endchap):
+sample = input('Enter 1 for full download & Enter 2 for sample: ')
+if sample == '1':
+    star = 0
+    end = len(chap_list)
+if sample == '2':
+    star = 0
+    end = star + 2
+        
+
+startTime = time.time()
 #Downloading Images
-    for chap in range(startchap, endchap):
-        url_sel = 'http://manga.animea.net'+link_list[chap]
-        sc1 = requests.get(url_sel)
-        soup1 = BeautifulSoup(sc1.text,'lxml')
-        opt = soup1.findAll('option')
-        chap_pages = int(opt[-1].text)
-        print ('Pages in chapter '+chap_no[chap]+' '+str(chap_pages))
-        page = 1
-        #page = page_no
-        while True:
-            if page > chap_pages:
-                break
-            try:
+for chap in range(star,end):
+    url_sel = 'http://manga.animea.net'+link_list[chap]
+    sc1 = requests.get(url_sel)
+    soup1 = BeautifulSoup(sc1.text,'lxml')
+    opt = soup1.findAll('option')
+    chap_pages = int(opt[-1].text)
+    print ('Pages in chapter '+chap_no[chap]+' '+str(chap_pages))
+    page = 1
+    while True:
+        if page > chap_pages:
+            break
+        try:
+            for fi in source:
+                if fi == 'C'+chap_no[chap]+'P'+str(page)+image_url[-4:] :
+                    print ('Skipping...')
+                    page += 1
+                    break
+            else:
                 sc2 = requests.get(url_sel[:-5]+'-page-'+str(page)+'.html')
                 soup2 = BeautifulSoup(sc2.text,'lxml')
                 img = soup2.select('td img')
                 image_url = img[0].get('src')
                 sc3 = requests.get(image_url)
                 print ('Downloading page '+str(page))
-                with open(os.path.join(search+'_Manga', 'C'+chap_no[chap]+'P'+str(page)+image_url[-4:]), 'wb') as file:
+                with open('C'+chap_no[chap]+'P'+str(page)+image_url[-4:], 'wb') as file:
                     file.write(sc3.content)
                 page += 1
-            except requests.exceptions.ConnectionError:
-                continue
-        #page_no = 1  
+        except requests.exceptions.ConnectionError:
+            continue
 
-k = len(chap_list)
-for i in range(2,k+1):
-    if k % i == 0:
-        z = i
-        if k == z:
-            k -= 1
-            for x in (2,k+1):
-                if k % x == 0:
-                    if k == x:
-                        break
-                    else:
-                        z = x
-                   
-print (z)
-
-downloadThreads = []  
-count = 0
-for i in range(0, len(chap_list), z):
-    if count == len(chap_list)//z:
-        if k != len(chap_list):
-            downloadThread = threading.Thread(target=mangaDown, args=(i, i + z + 2))
-        else:
-            downloadThread = threading.Thread(target=mangaDown, args=(i, i + z + 1))
-    else:
-        downloadThread = threading.Thread(target=mangaDown, args=(i, i + z + 1))
-    downloadThreads.append(downloadThread)
-    downloadThread.start()
-    count += 1
-
-for downloadThread in downloadThreads:
-    downloadThread.join()
-print('Done.')
-
+#Noting End time
+endTime = time.time()
+print ('Done in '+str(endTime - startTime))

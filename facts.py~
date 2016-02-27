@@ -10,7 +10,7 @@ facts = facts.split('\n')
 while True:    
     i = random.randrange(0,len(facts)-1)
     pynotify.init('test')
-    n = pynotify.Notification('Fact',facts[i])
+    n = pynotify.Notification('Fact No. '+str(i),facts[i])
     n.show()
     sleep (90)
 

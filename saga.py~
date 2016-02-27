@@ -23,7 +23,7 @@ while True:
 if user_input == 3 :
     fw = open('.songs.txt','w')
     try:
-        fr = open('downloaded.txt','r')
+        fr = open('.downloaded.txt','r')
         downloaded = fr.read()
         downloaded = downloaded.split('\n')
         fr.close()
@@ -41,7 +41,7 @@ if user_input == 3 :
     fr = open('.songs.txt','r')
     songs = fr.read()
     songs = songs.split('\n')
-    fa = open('downloaded.txt','a')
+    fa = open('.downloaded.txt','a')
 
     for x in songs:
         for y in downloaded:

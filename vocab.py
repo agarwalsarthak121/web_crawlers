@@ -8,7 +8,6 @@ fw = open('.vocab.txt','r')
 vocab = fw.read()
 vocab = vocab.split('\n')
 
-
 def sendmessage(title, message):
     pynotify.init("Test")
     notice = pynotify.Notification(title, message)

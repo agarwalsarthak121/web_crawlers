@@ -61,7 +61,7 @@ if user_input == 3 :
     fa.close()
 
 
-#Download songs from the file song.txt
+#Download songs from the a list
 elif user_input == 2:
     #fr = open('.downloaded.txt','r')
     #downloaded = fr.read()
@@ -82,18 +82,13 @@ elif user_input == 2:
     #fa = open('.downloaded.txt','a')
 
     for x in songs:
-      for y in downloaded:
-        if x == y:
-            break
-        else:
-            url2 = 'https://www.youtube.com/results?search_query='+x
-            sc =requests.get(url2)
-            soup2 = BeautifulSoup(sc.text,'lxml')
-            title = soup2.findAll('h3',{'class':'yt-lockup-title '})
-            print ('Downloading...')
-            os.system("youtube-dl --extract-audio --audio-format mp3 " + 'https://www.youtube.com'+title[0].find('a')['href'])
-            print ('Downloaded.')
-            fa.write(x+'\n')
+        url2 = 'https://www.youtube.com/results?search_query='+x
+        sc =requests.get(url2)
+        soup2 = BeautifulSoup(sc.text,'lxml')
+        title = soup2.findAll('h3',{'class':'yt-lockup-title '})
+        print ('Downloading...')
+        os.system("youtube-dl --extract-audio --audio-format mp3 " + 'https://www.youtube.com'+title[0].find('a')['href'])
+        print ('Downloaded.')
     print ('Download Complete')   
     #fa.close()
 

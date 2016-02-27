@@ -1,4 +1,4 @@
-#! /usr/bin/python
+#! /usr/bin/python3
 
 import requests
 from selenium import webdriver
@@ -35,15 +35,15 @@ mo = epi.search(li[-1].text)
 episodes = int(mo.group())
 print 'No. of Episodes:',episodes
 select = int(raw_input('Enter episode to start: '))
-k =0
 
 #Downloading episodes
 for ep_no in range(select,episodes+1):
+    k = ep_no*2
     print 'Downloading Episode',ep_no
     pynotify.init('test')
     n = pynotify.Notification('Episode '+str(ep_no)+' released','Firefox Will open Automatically and download will begin shortly')
     n.show()          
-    url = 'http://9xbuddy.com/download?url='+li[k+2].get('href')
+    url = 'http://9xbuddy.com/download?url='+li[k-1].get('href')
     driver = webdriver.Firefox()
     driver.get(url)
     sleep (15)
@@ -51,7 +51,6 @@ for ep_no in range(select,episodes+1):
     href = down.get_attribute('href')
     os.system('wget --output-document '+str(ep.no)+'.mp4 '+href)
     print '\nDownloaded Episode '+str(ep_no)
-    k += 2
     driver.quit()
 
 print 'All Episodes Downloaded'
