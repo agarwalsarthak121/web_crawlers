@@ -6,8 +6,8 @@ import pynotify
 from time import sleep
 
 try:
-    pnr = input('Enter pnr ')
-    url = 'http://www.railyatri.in/pnr-status/'+pnr
+    #pnr = input('Enter pnr ')
+    url = 'http://www.railyatri.in/pnr-status/2215114581'
     sc = requests.get(url)
     soup = BeautifulSoup(sc.text,'lxml')
     cs = soup.findAll('span',{'class':'arrival_span'})
