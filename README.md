@@ -1,3 +1,7 @@
+hangman.py + movies.txt
+
+>> Guess the bollywood movie in this hangman game.
+
 anime_down.py
 
 >> To download animes from animeshow.tv automatically.
