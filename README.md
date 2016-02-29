@@ -28,7 +28,7 @@ imdb_folders.py
 
 imdb.py
 
-Get imdb ratings and summary of any movie in terminal
+>> Get imdb ratings and summary of any movie in terminal
 
 imdb_compare.py
 
