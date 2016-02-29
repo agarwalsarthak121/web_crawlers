@@ -6,9 +6,13 @@ anime_down.py
 
 >> To download animes from animeshow.tv automatically.
 
-bing.py
+bing_v1.py
 
 >> Downloads the bing wallpaper every day at midnight and sets it as the wallpaper.
+
+bing_v2.py
+
+>> Downloads the bing wallpaper as soon as it is availabe and sets it as the wallpaper.
 
 cricinfo_pynotify.py
 
