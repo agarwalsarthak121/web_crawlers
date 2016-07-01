@@ -22,16 +22,16 @@ while True:
             break
         except requests.exceptions.ConnectionError:
             continue
-    if image_text[0].text not in bing:
+    if image_text[0].text.encode('utf-8') not in bing:
         while True:
             try:
                 image = soup.select('.cursor_zoom img')
                 image_url = image[0].get('src')
                 res = requests.get(image_url)
-                with open(os.path.join('Bing',image_text[0].text[1:9]+'.jpg'),'wb') as file:
+                with open(os.path.join('Bing',image_text[0].text.encode('utf-8')[1:9]+'.jpg'),'wb') as file:
                     file.write(res.content) 
-                os.system('gsettings set org.gnome.desktop.background picture-uri file:///home/radioactive/Bing/'+image_text[0].text[1:9]+'.jpg')
-                fw.write(image_text[0].text+'\n')
+                os.system('gsettings set org.gnome.desktop.background picture-uri file:///home/radioactive/Bing/'+image_text[0].text.encode('utf-8')[1:9]+'.jpg')
+                fw.write(image_text[0].text.encode('utf-8')+'\n')
                 fw.close()
                 break
             except requests.exceptions.ConnectionError:
