@@ -3,8 +3,20 @@
 import requests,os
 from bs4 import BeautifulSoup
 
+search = input('Enter tutorial name: ')
+url = 'http://www.tutorialspoint.com/tutorialslibrary.htm'
+sc = requests.get(url)
+soup = BeautifulSoup(sc.text,'html5lib')
+ul = soup.findAll('ul',class_='menu')
+links = []
+for i in range(len(ul)):
+	links = links + ul[i].find_all('li')
 
-url = input('Enter url of the tutorial to download: ')
+for link in links:
+	if search.lower() in link.text.lower():
+		url = 'http://www.tutorialspoint.com'+link.find('a').get('href')
+		print (url)
+		break
 name = input('Create new folder: ')
 os.makedirs(name,exist_ok=True)
 res = requests.get(url)
@@ -14,6 +26,7 @@ print (len(ul))
 
 for i in range(len(ul)):
 	li = ul[i].find_all('li')
+	print (len(li))
 	for j in range(1,len(li)):
 		href = li[j].find('a').get('href')
 		new_url = 'http://www.tutorialspoint.com'+href
@@ -29,4 +42,5 @@ for i in range(len(ul)):
 			pdffile.close()
 		else:
 			continue
-print ('Download Complete')
+		
+print ('Download Complete!!')
