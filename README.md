@@ -30,10 +30,6 @@ episode_down_checker.py
 
 >> Download a particular episode of an anime or check for the release of a new episode and download it automatically as soon as it is released
 
-imdb_folders.py
-
->> Manages your movies in folders as per imdb ratings. Your movie must be in the format 'movie_name.mp4/mkv/avi/flv'
-
 imdb.py
 
 >> Get imdb ratings and summary of any movie in terminal
