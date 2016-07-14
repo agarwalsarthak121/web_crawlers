@@ -1,8 +1,8 @@
 torrent_mail.py
 
->> Helps you download a torrent on your pc by just sending an email. Send an email to the email id (which you used while running the program) with subject as 'torrent <movie_name>' and your torrent will start downloading.
->>Works on linux systems with qbittorrent installed.
->> Can add any number of torrents.
+>> Helps you download a torrent on your pc by just sending an email. Send an email to the email id (which you used while running the program) with subject as 'torrent <movie_name>' and your torrent will start downloading.Can add any number of torrents by sending multiple mails.
+
+>>qbittorent must be installed on your pc.Visit here to install http://www.qbittorrent.org/download.php
 
 score_sms.py
 
