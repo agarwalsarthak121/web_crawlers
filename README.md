@@ -46,10 +46,11 @@ imdb_compare.py
 
 imdb_pynotify.py
 
->>Before using this script clear your clipborad using this terminal command.
-$ sudo apt-get install xclip
-$ echo -n | xclip -selection clipboard
-Now just run this script and as soon as you copy the name of any movie/tv series it will automatically display the rating and summary of that movie through desktop notification.
+>>Before using this script install xclip program on your system(needed to clear the clipboard)
+
+>>$ sudo apt-get install xclip
+
+>>Now just run this script and as soon as you copy the name of any movie/tv series it will automatically display the rating and summary of that movie through desktop notification.
 
 manga_down_v2.py
 
