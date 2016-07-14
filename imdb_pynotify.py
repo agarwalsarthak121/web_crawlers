@@ -4,7 +4,9 @@ from bs4 import BeautifulSoup
 import pynotify
 import pyperclip
 from time import sleep
+import os
 
+os.system('echo -n | xclip -selection clipboard')
 while True:
     movie = pyperclip.paste()
     if movie != '':
