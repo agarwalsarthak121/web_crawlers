@@ -38,4 +38,4 @@ while True:
 		for magnet in soup.findAll('a',{'class':'kaGiantButton '}):
 			os.system('qbittorrent '+magnet.get('href'))
 	else:
-		print ('Nothing found')
+		print ('No torrent found')
