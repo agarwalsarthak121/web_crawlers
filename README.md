@@ -1,3 +1,7 @@
+To install pynotify module use this command :
+
+>> sudo apt-get install python-notify
+
 torrent_mail.py
 
 >> Helps you download a torrent on your pc by just sending an email. Send an email to the email id (which you used while running the program) with subject as 'torrent movie_name' and your torrent will start downloading. You can add any number of torrents by sending multiple mails.
