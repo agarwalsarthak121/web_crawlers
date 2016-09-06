@@ -12,7 +12,7 @@ score_sms.py
 
 >> Get regular cricket score updates in the form of an SMS via way2sms (need a way2sms account to run)
 
-tpd.py
+tutorialsPointDownloader.py
 
 >> Download all the tutorials from tutorialspoint.com in pdf form
 
