@@ -26,7 +26,11 @@ anime_down.py
 
 bing_v1.py
 
->> Downloads the bing wallpaper every day at midnight and sets it as the wallpaper.
+>> Downloads the bing wallpaper every day at midnight and sets it as the wallpaper.(For linux only)
+
+bing_v1.py
+
+>> Downloads the bing wallpaper every day at 12 noon and sets it as the wallpaper.(For windows only)
 
 cricinfo_pynotify.py
 
