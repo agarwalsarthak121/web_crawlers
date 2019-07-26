@@ -6,7 +6,9 @@ while(True):
         with open(fileName) as f:
             data = json.load(f)
         break
-    except Exception as e:
+    except json.decoder.JSONDecodeError as e:
+        print("Invalid JSON format.",e)
+    except Exception:
         print("Invalid file Name.File not present in current directory.")
         continue
 
