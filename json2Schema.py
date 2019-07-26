@@ -11,9 +11,19 @@ while(True):
         continue
 
 def getJsonData(key,value):
-    if(isinstance(value,(str,bool,int)) or value is None):
+    if(isinstance(value,(str)) or value is None):
         tempDict = {}
         data_dict = {"description":"","type":"string","example":value}
+        tempDict[key] = data_dict
+        return tempDict
+    if(isinstance(value,(bool))):
+        tempDict = {}
+        data_dict = {"description":"","type":"boolean","example":value}
+        tempDict[key] = data_dict
+        return tempDict
+    if(isinstance(value,(int))):
+        tempDict = {}
+        data_dict = {"description":"","type":"integer","example":value}
         tempDict[key] = data_dict
         return tempDict
     if(isinstance(value,dict)):
