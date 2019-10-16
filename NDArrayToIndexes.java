@@ -1,4 +1,4 @@
-package com.luv2code.springdemo;
+//Assuming all the values to be greatea than or equal to 1
 
 import java.util.ArrayList;
 import java.util.List;
@@ -66,7 +66,6 @@ public class ArrayToIndex {
 class Node {
     public int value;
     public List<Node> children = new ArrayList<>();
-    public Node parent;
     
     public Node(int value)
     {
