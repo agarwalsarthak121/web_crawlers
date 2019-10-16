@@ -12,29 +12,28 @@ public class ArrayToIndex {
 		
 		for(int i=0;i<arr.length;i++)
 		{
-		    List<Node> forThisLoop = new ArrayList<>();
-		    for(int j=0;j<arr[i];j++)
-		    {
-                if(currParents.size()==0)
-                {
-		            Node iter = new Node(j);
-		            rootNodes.add(iter);
-		            forThisLoop.add(iter);
-                }
-		        else
-		        {
-		            for(int k=0;k<currParents.size();k++)
-		            {
-		            	Node parent = currParents.get(k);
-		                Node iter = new Node(j);
-		                parent.children.add(iter);
-		                forThisLoop.add(iter);
-		            }
-		        }
-		       
-		    }
-		    currParents.clear();
-		    currParents.addAll(forThisLoop);
+			List<Node> forThisLoop = new ArrayList<>();
+		    	for(int j=0;j<arr[i];j++)
+		    	{
+				if(currParents.size()==0)
+				{
+					    Node iter = new Node(j);
+					    rootNodes.add(iter);
+					    forThisLoop.add(iter);
+				}
+				else
+				{
+				    for(int k=0;k<currParents.size();k++)
+				    {
+					Node parent = currParents.get(k);
+					Node iter = new Node(j);
+					parent.children.add(iter);
+					forThisLoop.add(iter);
+				    }
+				}
+		    	}
+		    	currParents.clear();
+		    	currParents.addAll(forThisLoop);
 		}
 		
 		List<String> indexes = new ArrayList<>();
