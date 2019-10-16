@@ -1,4 +1,4 @@
-//Assuming all the values to be greatea than or equal to 1
+//Assuming all the values to be greater than or equal to 1
 
 import java.util.ArrayList;
 import java.util.List;
