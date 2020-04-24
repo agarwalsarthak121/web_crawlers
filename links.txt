@@ -1,1 +1,3 @@
 https://www.geeksforgeeks.org/must-do-coding-questions-for-companies-like-amazon-microsoft-adobe/?ref=leftbar
+
+https://api.covid19india.org/state_district_wise.json
