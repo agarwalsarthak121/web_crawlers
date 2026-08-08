@@ -1,3 +1,23 @@
+Sponsors
+
+If this project has helped you, please consider sponsoring my work. ❤️
+
+RapidProxy
+
+Thanks to RapidProxy for sponsoring this project.
+
+<a href="https://www.rapidproxy.io/?ref=crawlers">
+<img width="400" alt="RapidProxy: Fast and Reliable Proxy Service" src="rapidproxy-banner-show.png" /></a>
+
+RapidProxy provides fast, reliable residential and ISP proxies for web scraping, automation, and large-scale data collection. With 90M+ residential IPs, smart rotation, high concurrency, non-expiring traffic, and high success rates, it helps developers reduce blocks and run stable tasks at scale.
+
+90M+ residential IPs with smart rotation
+High concurrency and success rates
+Non-expiring traffic
+Pricing starts at $0.55/GB
+
+👉 Click the banner above or use code RAPID10 for 10% off.
+
 ## Features
 
 To install pynotify module use this command :
