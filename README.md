@@ -1,8 +1,8 @@
-Sponsors
+## Sponsors
 
 If this project has helped you, please consider sponsoring my work. ❤️
 
-RapidProxy
+### RapidProxy
 
 Thanks to RapidProxy for sponsoring this project.
 
@@ -17,6 +17,14 @@ Non-expiring traffic
 Pricing starts at $0.55/GB
 
 👉 Click the banner above or use code RAPID10 for 10% off.
+
+### Oxylabs
+
+Thanks to Oxylabs for sponsoring this project.
+
+<a href="https://oxylabs.io/?utm_source=agarwalsarthak121&utm_medium=cpc&utm_campaign=agarwalsarthak121_github_sponsor&adgroupid=20220223">
+<img width="400" alt="Oxylabs: Innovative Proxy Service to Gather Data at Scale" src="https://user-images.githubusercontent.com/8784712/155142247-17264699-1bc8-4b52-8236-8b9ef7b365e2.png" />
+</a>
 
 ## Features
 
@@ -113,9 +121,3 @@ xkcd_thread.py
 facts.py,quotes.py,vocab.py
 
 >> Displays any random fact,quote or word from a text file after every 5 minutes through desktop notification.
-
-## Sponser
-
-<a href="https://oxylabs.io/?utm_source=agarwalsarthak121&utm_medium=cpc&utm_campaign=agarwalsarthak121_github_sponsor&adgroupid=20220223">
-<img width="400" alt="Oxylabs: Innovative Proxy Service to Gather Data at Scale" src="https://user-images.githubusercontent.com/8784712/155142247-17264699-1bc8-4b52-8236-8b9ef7b365e2.png" />
-</a>
